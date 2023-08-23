@@ -4,6 +4,42 @@ Laravel training by [Mr. Ahmad Saiful Bahri](https://github.com/epool86)\
 Date: 23 & 24 August 2023\
 Platform: Online
 
+## Notes
+
+### View all routes
+
+```bash
+php artisan route:list
+```
+
+### Naming Convention
+
+`PascalCase`
+
+### Create migration file in DB
+
+```bash
+php artisan migrate:install
+```
+
+### Debug print in blade
+
+```php
+@dd(Auth::user())
+```
+
+### Create model with migration file
+
+```bash
+php artisan make:model Book -m
+```
+
+Then, edit the migration file to add columns etc. Finally, run
+
+```bash
+php artisan migrate
+```
+
 ---
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
