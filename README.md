@@ -40,6 +40,46 @@ Then, edit the migration file to add columns etc. Finally, run
 php artisan migrate
 ```
 
+## Screenshots
+
+### Register/login screen
+
+<img width="1440" alt="Screenshot 2023-08-25 at 4 24 12 PM" src="https://github.com/iqfareez/lara-library/assets/60868965/802ab223-c87d-4955-9fd6-0c4c0bd918fe">
+
+### Profile screen
+<img width="1440" alt="Screenshot 2023-08-25 at 4 24 55 PM" src="https://github.com/iqfareez/lara-library/assets/60868965/5124cb17-120b-4663-8635-062beb3da28c">
+
+### Book search
+
+<img width="1440" alt="Screenshot 2023-08-25 at 4 24 48 PM" src="https://github.com/iqfareez/lara-library/assets/60868965/26368ebf-3097-41fa-82a0-949c822fa33e">
+
+### User homepage
+<img width="1440" alt="Screenshot 2023-08-25 at 4 24 31 PM" src="https://github.com/iqfareez/lara-library/assets/60868965/018e22a6-7492-41ad-b97a-9e0922451b7f">
+
+### User borrowed books
+
+<img width="1440" alt="Screenshot 2023-08-25 at 4 24 38 PM" src="https://github.com/iqfareez/lara-library/assets/60868965/07a33649-898e-41a0-8e0a-c993a3fcfed8">
+
+### [Admin] User Management
+
+<img width="1440" alt="Screenshot 2023-08-25 at 4 27 09 PM" src="https://github.com/iqfareez/lara-library/assets/60868965/27be250a-aead-4fe3-b34c-0eedaa28faf2">
+
+### [Admin] Dashboard
+<img width="1440" alt="Screenshot 2023-08-25 at 4 26 21 PM" src="https://github.com/iqfareez/lara-library/assets/60868965/653fecbe-4ed8-48df-bceb-70ac42600b58">
+
+### [Admin] Manage books
+
+<img width="1440" alt="Screenshot 2023-08-25 at 4 26 29 PM" src="https://github.com/iqfareez/lara-library/assets/60868965/22179854-b955-4fb3-b989-fa6989c5bd76">
+
+### [Admin] Add/edit book
+<img width="1440" alt="Screenshot 2023-08-25 at 4 26 54 PM" src="https://github.com/iqfareez/lara-library/assets/60868965/132824a9-8f18-4812-b601-613b4dd72805">
+
+### [Admin] List of transactions (borrowed/returned books)
+<img width="1440" alt="Screenshot 2023-08-25 at 4 27 00 PM" src="https://github.com/iqfareez/lara-library/assets/60868965/ee260493-a284-400a-8c05-f8fe03810499">
+
+
+
+
 ---
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
