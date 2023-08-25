@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -25,7 +26,8 @@ class ProfileController extends Controller
                 'name' => 'required|min:3',
                 // use '.' to concantenate string
                 'email' => 'required|email|unique:users,email,' . $user->id,
-                'phone' => 'nullable'
+                'phone' => 'nullable',
+                'password' => 'nullable|min:6|confirmed'
             ]
         );
 
@@ -33,6 +35,8 @@ class ProfileController extends Controller
         $user->name = $request['name'];
         $user->email = $request['email'];
         $user->phone = $request['phone'];
+
+        $user->password = Hash::make($request['password']);
 
         // actually save the data to Db
         $user->save();

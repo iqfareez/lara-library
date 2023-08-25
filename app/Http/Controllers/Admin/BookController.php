@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Image;
 use App\Models\Book;
+use App\Exports\BooksExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BookController extends Controller
 {
@@ -70,7 +72,7 @@ class BookController extends Controller
         }
 
         $img = Image::make($request->thumbnail->getRealPath());
-        $img->resize(300, 300, function ($constraint) {
+        $img->fit(300, 300, function ($constraint) {
             $constraint->aspectRatio();
         })->save($directory . '/' . $image_name);
 
@@ -125,7 +127,9 @@ class BookController extends Controller
                 // use '.' to concantenate string
                 'description' => 'nullable',
                 'isbn' => 'nullable',
-                'status' => 'required|in:0,1'
+                'status' => 'required|in:0,1',
+                'thumbnail' => 'nullable|mimes:jpeg,jpg,png|max:10000'
+
             ]
         );
 
@@ -134,6 +138,19 @@ class BookController extends Controller
         $book->description = $request['description'];
         $book->isbn = $request['isbn'];
         $book->status = $request['status'];
+
+        $image_name = 'thumbnail_' . time() . '.' . $request->thumbnail->getClientOriginalExtension();
+        $directory = $_SERVER['DOCUMENT_ROOT'] . './uploads/thumbnail';
+        if (!file_exists($directory)) {
+            mkdir($directory, 0755, true);
+        }
+
+        $img = Image::make($request->thumbnail->getRealPath());
+        $img->fit(300, 300, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($directory . '/' . $image_name);
+
+        $book->thumbnail = $image_name;
 
         // actually save the data to Db
         $book->save();
@@ -157,5 +174,10 @@ class BookController extends Controller
         Session()->flash('success', 'Book has been deleted!');
 
         return redirect()->route('admin.book.index');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new BooksExport, 'books.xlsx');
     }
 }

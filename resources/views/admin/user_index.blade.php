@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">List of Books
+        <div class="card-header">List of Users
 
             <div style="float:right;">
-                <a href="{{ route('admin.book.export') }}" class="btn btn-secondary">Export Excel</a>
-                <a href="{{ route('admin.book.create') }}" class="btn btn-primary">Add New Book</a>
+                {{-- <a href="{{ route('admin.user.export') }}" class="btn btn-secondary">Export Excel</a> --}}
+                <a href="{{ route('admin.user.create') }}" class="btn btn-primary">Add New User</a>
             </div>
         </div>
         <div class="card-body">
@@ -17,37 +17,34 @@
                 <table class="table">
                     <tr>
                         <th>#</th>
-                        <th>Book Title</th>
+                        <th>Name</th>
                         {{-- <th>Description</th> --}}
-                        <th>Thumbnail</th>
-                        <th>ISBN</th>
-                        <th>Status</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Role</th>
                         <th>Action</th>
                     </tr>
                     @php($i = 0)
-                    @foreach ($books as $book)
+                    @foreach ($users as $user)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $book->title }}</td>
-                            {{-- <td>{{ $book->description }}</td> --}}
-                            <td><img src="{{ asset('uploads/thumbnail/' . $book->thumbnail) }}" alt=""></td>
-                            <td><code>{{ $book->isbn }}</code></td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->phone }}</td>
+                            <td><code>{{ $user->email }}</code></td>
                             <td>
-                                @if ($book->status == 0)
-                                    <span class="badge bg-secondary">Unavailable</span>
+                                @if ($user->role == 'user')
+                                    <span class="badge bg-primary">User</span>
                                 @else
-                                    <span class="badge bg-success">Available</span>
+                                    <span class="badge bg-danger">Admin</span>
                                 @endif
                             </td>
                             <td>
-                                <form action="{{ route('admin.book.destroy', $book->id) }}" method="POST">
+                                <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST">
                                     <input type="hidden" value="DELETE" name="_method">
                                     @csrf
                                     <a class="btn btn-primary btn-sm"
-                                        href="{{ route('admin.book.edit', $book->id) }}">Edit</a>
+                                        href="{{ route('admin.user.edit', $user->id) }}">Edit</a>
                                     <button class="btn btn-danger btn-sm">Delete</button>
-                                    <a class="btn btn-success btn-sm"
-                                        href="{{ route('admin.transaction.create', $book->id) }}">Borrow</a>
                                 </form>
                             </td>
                         </tr>
